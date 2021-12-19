@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService  } from '../service/config.service';
 
 @Component({
   selector: 'app-counter',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CounterComponent implements OnInit {
 
-  constructor() { }
+  dateNow = new Date();
+
+  constructor(private service: ConfigService) {
+    this.service = service;
+  }
 
   ngOnInit(): void {
+    this.subscribeNextMissionData();
+  }
+
+  subscribeNextMissionData(){ 
+    this.service.nextDate().subscribe((res) => {
+      console.log(res)
+    })
   }
 
 }
