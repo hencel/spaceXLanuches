@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService  } from '../service/config.service';
+import { apiData } from '../interface/interface';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-counter',
@@ -8,20 +10,35 @@ import { ConfigService  } from '../service/config.service';
 })
 export class CounterComponent implements OnInit {
 
-  dateNow = new Date();
+  dateNow: string = '';
+  timeNow: string = '';
+  subscribedData: apiData = {date_utc: '', name: ''};
+  dateMision: string = '';
+  timeMision: string = '';
 
-  constructor(private service: ConfigService) {
+  constructor(private service: ConfigService, private datePipe: DatePipe) {
     this.service = service;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.subscribeNextMissionData();
+    this.transformDate()
   }
 
-  subscribeNextMissionData(){ 
+  subscribeNextMissionData() { 
+    let tempData: any;
     this.service.nextDate().subscribe((res) => {
-      console.log(res)
+      tempData =  res;
+      this.subscribedData = {date_utc: tempData.date_utc, name: tempData.name};
+      this.dateMision = this.subscribedData.date_utc.substring(0, this.subscribedData.date_utc.indexOf('T'));
+      this.timeMision = this.subscribedData.date_utc.substring(this.subscribedData.date_utc.indexOf('T')+1, this.subscribedData.date_utc.indexOf('.'));
     })
+  }
+
+  transformDate() {
+    const currentDate = new Date();
+    this.dateNow = this.datePipe.transform(currentDate, 'yyyy-MM-dd') as string;
+    this.timeNow = this.datePipe.transform(currentDate, 'h:mm:ss') as string;
   }
 
 }
