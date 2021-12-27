@@ -10,11 +10,14 @@ import { DatePipe } from '@angular/common';
 })
 export class CounterComponent implements OnInit {
 
-  dateNow: string = '';
-  timeNow: string = '';
   subscribedData: apiData = {date_utc: '', name: ''};
-  dateMision: string = '';
-  timeMision: string = '';
+  currentDate: Date = new Date();
+  missionDate: Date = new Date();
+  distance: number = 0;
+  days: number = 0;
+  hours: number = 0;
+  minutes: number = 0;
+  seconds: number = 0;
 
   constructor(private service: ConfigService, private datePipe: DatePipe) {
     this.service = service;
@@ -22,7 +25,6 @@ export class CounterComponent implements OnInit {
 
   ngOnInit() {
     this.subscribeNextMissionData();
-    this.transformDate()
   }
 
   subscribeNextMissionData() { 
@@ -30,15 +32,27 @@ export class CounterComponent implements OnInit {
     this.service.nextDate().subscribe((res) => {
       tempData =  res;
       this.subscribedData = {date_utc: tempData.date_utc, name: tempData.name};
-      this.dateMision = this.subscribedData.date_utc.substring(0, this.subscribedData.date_utc.indexOf('T'));
-      this.timeMision = this.subscribedData.date_utc.substring(this.subscribedData.date_utc.indexOf('T')+1, this.subscribedData.date_utc.indexOf('.'));
+      this.missionDate = new Date(tempData.date_utc);
+      this.makeCounter(this.missionDate)
     })
   }
 
-  transformDate() {
-    const currentDate = new Date();
-    this.dateNow = this.datePipe.transform(currentDate, 'yyyy-MM-dd') as string;
-    this.timeNow = this.datePipe.transform(currentDate, 'h:mm:ss') as string;
+  makeCounter(finish:Date) {
+
+    const timer = setInterval(() => {
+      const date = new Date();
+      const now_utc =  new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(),date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
+
+      let startDate: number = now_utc.getTime();
+      let finishDate: number = finish.getTime();
+      let distance = finishDate - startDate;
+
+      this.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    }, 1000);
   }
 
 }
