@@ -5,8 +5,13 @@
         text-align: center;
         margin: 0 20px;
         font-size: 20px;
+        color: #fff;
         span {
             font-size: 60px;
         }
     }
+}
+.page-background {
+    background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(9,9,121,1) 35%, rgba(167,169,172,1) 100%); 
+    height: calc(100vh - 76px - 50px);
 }
