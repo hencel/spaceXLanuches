@@ -11,5 +11,6 @@ export class HeaderComponent {
     {link: 'launchesList', title: 'Launches List'},
     {link: 'roadster', title: 'Roadster'}
   ];
+  title: string = 'Launch counter'
 
 }
