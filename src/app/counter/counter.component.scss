@@ -1,0 +1,12 @@
+.counter-container {
+    div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin: 0 20px;
+        font-size: 20px;
+        span {
+            font-size: 60px;
+        }
+    }
+}
