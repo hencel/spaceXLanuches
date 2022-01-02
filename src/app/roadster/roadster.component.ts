@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '../service/config.service';
 
 @Component({
   selector: 'app-roadster',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RoadsterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ConfigService ) { }
 
   ngOnInit(): void {
+    this.getRoadsterData();
   }
 
+  getRoadsterData() { 
+    let tempData: any;
+    this.service.roadsterApi().subscribe((res) => {
+      tempData = res;
+      
+    })
+  }
 }
