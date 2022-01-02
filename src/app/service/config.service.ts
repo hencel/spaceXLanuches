@@ -10,9 +10,14 @@ export class ConfigService {
   constructor(private http: HttpClient) { }
 
   nextUrl:string = 'https://api.spacexdata.com/v4/launches/next';
+  roadsterUrl: string = 'https://api.spacexdata.com/v3/roadster';
 
   nextDate() {
     return this.http.get(this.nextUrl)
+  }
+
+  roadsterApi() {
+    return this.http.get(this.roadsterUrl)
   }
 
 }
