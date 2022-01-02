@@ -1,11 +1,11 @@
 <section class="page-background d-flex align-items-center justify-content-center">
-    <div class="flex-row counter-container justify-content-center" [ngClass]="[counterState == true ? 'd-flex' : 'd-none']">
+    <div class="flex-column flex-sm-row counter-container justify-content-center" [ngClass]="[counterState == true ? 'd-flex' : 'd-none']">
         <div><span>{{days}}</span>days</div>
         <div><span>{{hours}}</span>hours</div>
         <div><span>{{minutes}}</span>minutes</div>
         <div><span>{{seconds}}</span>seconds</div>
     </div>
-    <div class="flex-row counter-container counter-container-empty justify-content-center" [ngClass]="[counterState == true ? 'd-none' : 'd-flex']">
+    <div class="flex-column flex-sm-row counter-container counter-container-empty justify-content-center" [ngClass]="[counterState == true ? 'd-none' : 'd-flex']">
         <div><span>__</span>days</div>
         <div><span>__</span>hours</div>
         <div><span>__</span>minutes</div>
