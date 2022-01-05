@@ -1,8 +1,11 @@
 <section class="page-background d-flex align-items-center justify-content-center">
     <div class="container">
-        <div class="col-12 col-md-5">
+        <div class="col-12 col-md-5 d-flex align-items-start flex-column roadster-text">
             <h2>{{data.name}}</h2>
-
+            <div class="">{{data.details}}</div>
+            <div>Current distance to earth: <span>{{data.earth_dist | number:'1.0-3'}} km</span></div>
+            <div>Current distance to mars: <span>{{data.mars_dist | number:'1.0-3'}} km</span></div>
+            <div>Current speed: <span>{{data.speed_kph | number:'1.0-3'}} km</span></div>
         </div>
         <div class="col-12 col-md-5">
 

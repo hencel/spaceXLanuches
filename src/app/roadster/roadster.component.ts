@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ConfigService } from '../service/config.service';
 import { RoadsterData } from '../interface/interface';
 
@@ -35,4 +35,6 @@ export class RoadsterComponent implements OnInit {
       this.data.images = tempData.flickr_images;
     })
   }
+
+  
 }
