@@ -11,6 +11,7 @@ import { CounterComponent } from './counter/counter.component';
 import { LaunchesListComponent } from './launches-list/launches-list.component';
 import { RoadsterComponent } from './roadster/roadster.component';
 import { LinkListItemComponent } from './link-list-item/link-list-item.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { LinkListItemComponent } from './link-list-item/link-list-item.component
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
