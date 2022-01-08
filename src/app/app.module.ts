@@ -12,6 +12,7 @@ import { LaunchesListComponent } from './launches-list/launches-list.component';
 import { RoadsterComponent } from './roadster/roadster.component';
 import { LinkListItemComponent } from './link-list-item/link-list-item.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { Router, RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    RouterModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
