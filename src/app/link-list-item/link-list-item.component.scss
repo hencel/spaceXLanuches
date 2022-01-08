@@ -5,6 +5,9 @@ ul {
             text-decoration: none;
             color: #fff;
             font-size: 20px;
+            &.active {
+                color: red
+            }
         }
     }
 }
