@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: 'counter', component: CounterComponent },
   { path: 'launchesList', component: LaunchesListComponent },
   { path: 'roadster', component: RoadsterComponent },
+  { path: '**', component: CounterComponent }
 ];
 
 @NgModule({
