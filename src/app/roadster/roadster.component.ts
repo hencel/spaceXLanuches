@@ -9,6 +9,9 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./roadster.component.scss']
 })
 export class RoadsterComponent implements OnInit {
+
+  roadsterUrl: string = 'https://api.spacexdata.com/v3/roadster';
+
   data: RoadsterData = {
     details: '',
     earth_dist: 0,
@@ -33,7 +36,7 @@ export class RoadsterComponent implements OnInit {
 
   getRoadsterData() { 
     let tempData: any;
-    this.service.roadsterApi().subscribe((res) => {
+    this.service.serviceApi(this.roadsterUrl).subscribe((res) => {
       tempData = res;
       this.data.details = tempData.details;
       this.data.earth_dist = tempData.earth_distance_km;
