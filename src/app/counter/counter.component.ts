@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ConfigService  } from '../service/config.service';
 import { apiData } from '../interface/interface';
 import { DatePipe } from '@angular/common';
@@ -10,6 +10,8 @@ import { DatePipe } from '@angular/common';
 })
 export class CounterComponent implements OnInit {
 
+  nextUrl:string = 'https://api.spacexdata.com/v4/launches/next';
+  
   subscribedData: apiData = {date_utc: '', name: ''};
   currentDate: Date = new Date();
   missionDate: Date = new Date();
@@ -30,8 +32,9 @@ export class CounterComponent implements OnInit {
 
   subscribeNextMissionData() { 
     let tempData: any;
-    this.service.nextDate().subscribe((res) => {
+    this.service.serviceApi(this.nextUrl).subscribe((res) => {
       tempData =  res;
+  
       this.subscribedData = {date_utc: tempData.date_utc, name: tempData.name};
       this.missionDate = new Date(tempData.date_utc);
       this.makeCounter(this.missionDate);
