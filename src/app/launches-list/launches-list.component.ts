@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ConfigService } from '../service/config.service';
 
 @Component({
   selector: 'app-launches-list',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./launches-list.component.scss']
 })
 export class LaunchesListComponent implements OnInit {
+  launchesUrl: string = 'https://api.spacexdata.com/v3/launches';
 
-  constructor() { }
+  constructor(private service: ConfigService,) { }
 
   ngOnInit(): void {
+    this.getLaunchesData();
   }
 
+  getLaunchesData() {
+    let tempData:any;
+    this.service.serviceApi(this.launchesUrl).subscribe((res) => {
+      tempData = res;
+    })
+  }
 }
