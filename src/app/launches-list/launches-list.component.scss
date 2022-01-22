@@ -1,0 +1,12 @@
+.blinking {
+    animation: animation 1s steps(5, start) infinite;
+    -webkit-animation: animation 1s steps(5, start) infinite;
+}
+@keyframes animation {
+    to {
+      opacity: 0.4;
+    }
+}
+.title-bold {
+    font-weight: 600;
+}

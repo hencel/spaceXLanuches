@@ -8,7 +8,7 @@ import { ConfigService } from '../service/config.service';
 })
 export class LaunchesListComponent implements OnInit {
   launchesUrl: string = 'https://api.spacexdata.com/v3/launches';
-  datas: any;
+  datas: any = false;
 
   constructor(private service: ConfigService) { }
 
@@ -17,7 +17,6 @@ export class LaunchesListComponent implements OnInit {
   }
 
   getLaunchesData() {
-    // let tempData:any;
     this.service.serviceApi(this.launchesUrl).subscribe((res) => {
       this.datas = res;
     })
