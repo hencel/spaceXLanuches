@@ -9,7 +9,7 @@
         <div class="col-2">Launch date - UTC time</div>
         <div class="col-4">Links to images</div>
     </div>
-    <div *ngFor="let data of datas" class="row border-bottom mb-2 pb-2">
+    <div *ngFor="let data of datas, let odd = odd" class="row py-2" [ngClass]="odd ? 'gray-background' : ''">
         <div class="col-1 text-center">{{data.flight_number}}</div>
         <div class="col-2 text-center">{{data.mission_name}}</div>
         <div class="col-3">{{data.details}}</div>
