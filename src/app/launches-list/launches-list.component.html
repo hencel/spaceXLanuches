@@ -1,5 +1,8 @@
-<div class="container">
-    <div class="row mt-3 mb-2 pb-3 text-center" style="border-bottom: 2px solid black">
+<div class="container mb-5 pb-5">
+    <div *ngIf="!datas" class="mt-5 display-5 text-center blinking">
+       Waiting for data... 
+    </div>
+    <div class="row mt-3 mb-2 pb-3 text-center title-bold" style="border-bottom: 2px solid black" *ngIf="datas">
         <div class="col-1">Flight number</div>
         <div class="col-2">Mission name</div>
         <div class="col-3">Details</div>
